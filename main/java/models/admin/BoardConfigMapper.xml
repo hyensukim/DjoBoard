@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardConfigMapper">
+	<resultMap id="boardConfigMap" type="models.admin.BoardConfig">
+		<result property="boardId" column="boardId"/>
+		<result property="boardNm" column="boardNm"/>
+		<result property="useConfig" column="useConfig"/>
+		<result property="useEditor" column="useEditor"/>
+		<result property="useComment" column="useComment"/>
+		<result property="useAttach" column="useAttach"/>
+		<result property="boardIndex" column="boardIndex"/>
+		<result property="boardPageIndex" column="boardPageIndex"/>
+		<result property="topHtml" column="topHtml"/>
+		<result property="bottomHtml" column="bottomHtml"/>
+		<result property="boardRegDt" column="boardRegDt"/>
+		<result property="boardModDt" column="boardModDt"/>
+	</resultMap>
+	
+	<!-- 마이 바티스 쿼리 정의 -->
+	<!-- 
+		DB명 : Djo_board
+		테이블명 : boardConfig
+		DTO : models.admin.BoardConfig
+	-->
+	
+	<select id="configs" parameterType="models.admin.BoardConfig" resultMap="boardConfigMap">
+		SELECT * FROM boardConfig
+		<trim prefix="WHERE" suffixOverrides="AND | OR">
+			<if test="boardNm != null">
+				boardNm LIKE #{boardNm} AND
+			</if>
+			<if test="boardId != null">
+				boardId LIKE #{boardId} AND
+			</if>
+		</trim>
+		ORDER BY boardRegDt DESC;
+	</select>
+	
+	<select id="config" parameterType="models.admin.BoardConfig" resultMap="boardConfigMap">
+		SELECT * FROM boardConfig WHERE boardId = #{boardId};
+	</select>
+	
+	<select id="count" parameterType="models.admin.BoardConfig" resultType="int">
+		SELECT COUNT(*) FROM boardConfig WHERE boardId = #{boardId};
+	</select>
+	
+	<insert id="insert" parameterType="models.admin.BoardConfig" >
+		INSERT INTO boardConfig (boardId, boardNm, useConfig, useEditor, useComment, useAttach, boardIndex, boardPageIndex, topHtml, bottomHtml)
+			VALUES(#{boardId}, #{boardNm}, #{useConfig}, #{useEditor}, #{useComment}, #{useAttach}, #{boardIndex}, #{boardPageIndex}, #{topHtml}, #{bottomHtml});
+	</insert>
+	
+	<update id="update" parameterType="models.admin.BoardConfig">
+		UPDATE boardConfig
+			SET
+				boardNm=#{boardNm},
+				useConfig=#{useConfig},
+				useEditor=#{useEditor},
+				useComment=#{useComment},
+				useAttach=#{useAttach},
+				boardIndex=#{boardIndex},
+				boardPageIndex=#{boardPageIndex},
+				topHtml=#{topHtml},
+				bottomHtml=#{bottomHtml},
+				boardModDt=NOW()
+			WHERE boardId = #{boardId};
+	</update>
+	
+	<delete id="delete" parameterType="models.admin.BoardConfig">
+		DELETE FROM boardConfig WHERE boardId = #{boardId};
+	</delete>
+</mapper>
