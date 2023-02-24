@@ -57,7 +57,7 @@
 				<td>
 					<input type="checkbox" name="useAttach" value="basic" id="basic">
 					<label >일반파일</label>
-					<input type="checkbox" name="useAttach" value="basic" id="image">
+					<input type="checkbox" name="useAttach" value="image" id="image">
 					<label>이미지파일</label>
 				</td>
 			</tr>

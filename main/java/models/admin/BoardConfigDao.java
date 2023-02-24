@@ -47,11 +47,12 @@ public class BoardConfigDao {
 	 */
 	public boolean save(BoardConfig boardConfig) {
 		int result = 0;
-		int cnt = qe.count("BoardConfigMapper.count", boardConfig);
+		int cnt = qe.count("BoardConfigMapper.count", boardConfig); // 1
 		if( cnt >0) {
 			result = qe.update("BoardConfigMapper.update", boardConfig);
+		}else {
+			result = qe.insert("BoardConfigMapper.insert", boardConfig);
 		}
-		result = qe.insert("BoardConfigMapper.insert", boardConfig);
 		return result > 0;
 	}
 	

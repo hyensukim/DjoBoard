@@ -29,7 +29,7 @@ public class ConfigSaveServiceValidator implements Validator<BoardConfig>, Check
 		int index = boardConfig.getBoardIndex();
 		if(index <= 0 || index >30) boardConfig.setBoardIndex(20);
 		int pageIndex = boardConfig.getBoardPageIndex();
-		if(pageIndex <0 || pageIndex >20) boardConfig.setBoardPageIndex(10);
+		if(pageIndex <= 0 || pageIndex >20) boardConfig.setBoardPageIndex(10);
 
 	}
 

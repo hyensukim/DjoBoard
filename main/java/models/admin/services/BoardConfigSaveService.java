@@ -37,23 +37,24 @@ public class BoardConfigSaveService {
 
 		boardConfig.setBoardNm(request.getParameter("boardNm"));
 		
-		 //my sql - tinyint : true = '1' false='0' null
+		 //my sql - tinyint : true(사용) = '1' false(미사용)='0'
+		
 		String useConfig = request.getParameter("useConfig");
-		boardConfig.setUseConfig(useConfig == "0" || useConfig == null? false : true);
+		boardConfig.setUseConfig(useConfig.equals("0") || useConfig == null ? false : true);
 			
 		String useEditor = request.getParameter("useEditor");
-		boardConfig.setUseEditor(useEditor == "0" || useConfig == null? false : true);
+		boardConfig.setUseEditor(useEditor.equals("0") || useEditor == null? false : true);
 		
 		String useComment = request.getParameter("useComment");
-		boardConfig.setUseComment(useComment =="0" || useComment==null? false : true);
+		boardConfig.setUseComment(useComment.equals("0") || useComment==null ?  false : true);
 		
 		// 스트림 collect() 메서드 다시 공부
 		String[] types = request.getParameterValues("useAttach");
 		String type = null;
 		if(types != null) {
-			type = Arrays.stream(types).collect(Collectors.joining("||"));
+			type = Arrays.stream(types).collect(Collectors.joining(" || "));
 		}
-		boardConfig.setUseAttach(request.getParameter(type));
+		boardConfig.setUseAttach(type);
 		
 		//null이거나 비어있는 경우 0 , 아니면 문자열 -> 정수
 		String boardIndex = request.getParameter("boardIndex");
@@ -63,6 +64,9 @@ public class BoardConfigSaveService {
 		String boardPageIndex = request.getParameter("boardPageIndex");
 		boardConfig.setBoardPageIndex(boardPageIndex==null || boardPageIndex.isBlank()?
 				0 : Integer.parseInt(boardPageIndex));
+		
+		boardConfig.setTopHtml(request.getParameter("topHtml"));
+		boardConfig.setBottomHtml(request.getParameter("bottomHtml"));
 		// 0. 파라미터 값 DTO에 담기 E
 		
 		

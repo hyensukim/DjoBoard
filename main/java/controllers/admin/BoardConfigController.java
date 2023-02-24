@@ -30,7 +30,6 @@ public class BoardConfigController extends HttpServlet{
 			ConfigServiceManager manager = ConfigServiceManager.getInstance();
 			BoardConfigSaveService service = manager.getboardConfigSaveService();
 			service.save(req);
-			
 		}catch(RuntimeException e) {
 			e.printStackTrace();
 			alertError(resp, e);
