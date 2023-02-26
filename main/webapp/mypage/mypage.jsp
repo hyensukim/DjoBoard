@@ -4,8 +4,9 @@
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layouts"%>
 
 <fmt:setBundle basename="messages.common" />
-<fmt:message var="title" key="mainTitle"/>
+<fmt:message var="title" key="mypage.mypageTitle"/>
 
 <layout:main siteTitle="${title}">
 
+	<button type="button" onClick="location.href='<c:url value='/mypage/config' />'">수정하기</button>
 </layout:main>

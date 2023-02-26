@@ -7,7 +7,8 @@
 <%@ attribute name="siteTitle" %>
 
 <fmt:setBundle basename="messages.common" />
-<layout:common siteTitle="${siteTitle}">
+<fmt:message var="title" key="homepageName"/>
+<layout:common siteTitle="${title}">
 <jsp:attribute name="header">
 	<section id="site_top">
 		<div class='left'>
@@ -16,7 +17,7 @@
 		
 		<div class='title'>
 			<a href="<c:url value="/"/>">
-				${siteTitle}
+				${title}
 			</a>
 		</div>
 		
@@ -27,6 +28,9 @@
 					<fmt:param value="${sessionScope.member.userNm}" />
 					<fmt:param value="${sessionScope.member.userId}" />
 				</fmt:message>
+				<a href="<c:url value='/mypage'/>">
+					<fmt:message key="mypage.mypageTitle"/>	<!-- 내 프로필 url 삽입 -->
+				</a>
 				<a href="<c:url value='/member/logout' />">	<!-- 로그아웃 페이지 url 삽입 -->
 					<fmt:message key="member.logout" />
 				</a>
@@ -44,6 +48,9 @@
 			</c:if>
 		</div>
 	</section>
+	
+	
+	
 </jsp:attribute>
 
 <jsp:attribute name="footer">
@@ -51,6 +58,12 @@
 </jsp:attribute>
 
 <jsp:body>
+	<nav>
+		<div class='layout_width'>
+			<a href='#'>게시판 목록</a> <!-- 게시판 목록 페이지 경로 삽입 -->
+		</div>
+	</nav>
+	<h1>${siteTitle}</h1>
 	<jsp:doBody />
 </jsp:body>
 
