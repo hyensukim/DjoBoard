@@ -21,6 +21,6 @@ public class MyConnection {
 	}
 	
 	public static SqlSession getSession() {
-		return sqlSessionFactory.openSession(true);
+		return sqlSessionFactory.openSession();
 	}
 }// class E

@@ -62,13 +62,16 @@ public class QueryExecutor implements InsertQuery, UpdateQuery, DeleteQuery, Sel
 	public <T> int delete(String mapper, T t) {
 		session = getSession();
 		int cnt = session.delete(mapper, t);
+		session.commit();
 		return cnt;
+		
 	}
 
 	@Override
 	public <T> int update(String mapper, T t) {
 		session = getSession();
 		int cnt = session.update(mapper, t);
+		session.commit();
 		return cnt;
 	}
 
@@ -76,6 +79,7 @@ public class QueryExecutor implements InsertQuery, UpdateQuery, DeleteQuery, Sel
 	public <T> int insert(String mapper, T t) {
 		session = getSession();
 		int cnt = session.insert(mapper, t);
+		session.commit();
 		return cnt;
 	}
 
