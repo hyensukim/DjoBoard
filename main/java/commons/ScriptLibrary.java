@@ -18,7 +18,7 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			String message = e.getMessage();
 			
-			out.printf("<script>alert(warning : '%s')</script>", message);
+			out.printf("<script>alert('warning : %s')</script>", message);
 		}catch(Exception e2) {
 			e2.printStackTrace();
 		}
