@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+
+	<resultMap id="memberMap" type="models.member.Member">
+		<result property="userNo" column="userNo" />
+		<result property="userId" column="userId" />
+		<result property="userPw" column="userPw" />
+		<result property="userNm" column="userNm" />
+		<result property="mobile" column="mobile" />
+		<result property="regDt" column="regDt" />
+		<result property="modDt" column="modDt" />
+	</resultMap>
+
+	<select id="members" parameterType="models.member.Member"
+		resultMap="memberMap">
+		SELECT * FROM member
+		<trim prefix="WHERE" suffixOverrides="AND|OR">
+			<if test="userId != null">
+				userId=#{userId} AND
+			</if>
+			<if test="userNm != null">
+				userNm LIKE #{userNm} AND
+			</if>
+			<if test="mobile != null">
+				mobile LIKE #{mobile} AND
+			</if>			
+		</trim>
+	</select>
+	
+	<select id="count" parameterType="models.member.Member" resultType="int">
+		SELECT COUNT(*) FROM member WHERE userId=#{userId};
+	</select>
+
+	<select id="member" parameterType="models.member.Member"
+		resultMap="memberMap">
+		SELECT * FROM member WHERE userId=#{userId};
+	</select>
+
+	<insert id="insert" parameterType="models.member.Member"
+		keyProperty="userNo" useGeneratedKeys="true">
+		INSERT INTO member(userId, userPw, userNm, mobile)
+		VALUES(#{userId}, #{userPw}, #{userNm}, #{mobile});
+	</insert>
+
+	<update id="update" parameterType="models.member.Member">
+		UPDATE member
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="userPw !=null">
+				userPw=#{userPw},
+			</if>
+			<if test="userNm !=null">
+				userNm=#{userNm},
+			</if>
+			<if test="mobile !=null">
+				mobile=#{mobile},
+			</if>
+			<if test="userPw !=null">
+				userPw=#{userPw},
+			</if>
+		</trim>
+		WHERE userId=#{userId};
+	</update>
+	
+	<delete id="delete" parameterType="models.member.Member">
+		DELETE FROM member WHERE userId=#{userId};
+	</delete>
+	
+	
+</mapper>
