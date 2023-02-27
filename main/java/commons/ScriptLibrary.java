@@ -18,7 +18,11 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			String message = e.getMessage();
 			
+<<<<<<< HEAD
 			out.printf("<script>alert('warning : %s')</script>", message);
+=======
+			out.printf("<script>alert('warning: %s');</script>", message);
+>>>>>>> 권혜수
 		}catch(Exception e2) {
 			e2.printStackTrace();
 		}
@@ -61,7 +65,7 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			target = target == null? "self" : target;
 			
-			out.printf("<script> %s.history.go() </script>", target, step);
+			out.printf("<script> %s.history.go();</script>", target, step);
 			
 		}catch(Exception e) {
 			e.printStackTrace();

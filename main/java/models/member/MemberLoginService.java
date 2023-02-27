@@ -68,7 +68,11 @@ public class MemberLoginService {
 			//아이디 저장이 없는 경우 쿠키 삭제
 			saveId.setMaxAge(0);
 		}
+		
+		response.addCookie(saveId);
 		// -------------------------아이디 저장이 있거나 없는 경우 처리 E
+		
+		
 		
 	}
 

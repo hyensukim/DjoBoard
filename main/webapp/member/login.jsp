@@ -13,7 +13,7 @@
 				<fmt:message key="userId" />
 			</dt>
 			<dd>
-				<input type="text" name="userId">
+				<input type="text" name="userId" value="${cookie.saveId.value}" >
 			</dd>		
 		</dl>
 		<dl>
@@ -25,7 +25,7 @@
 			</dd>	
 		</dl>
 		<div>
-			<input type="checkbox" name="saveId" value="1" id="saveId">
+			<input type="checkbox" name="saveId" value="1" id="saveId"${cookie.saveId.value == null ? '' : ' checked' }>
 			<label for="saveId">
 				<fmt:message key="member.saveId" />
 			</label>
