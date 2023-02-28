@@ -10,6 +10,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class ScriptLibrary {
+	
+	// 삭제 시 확인 메세지 발생
+	public static void deleteConfirm(HttpServletResponse response) {
+		try {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>if(!confirm('정말삭제하시겠습니까?')) return;</script>");
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	// 에러전용 - alert 메세지 발생
 	public static void alertError(HttpServletResponse response, Exception e) {
@@ -30,7 +42,7 @@ public class ScriptLibrary {
 		alertError(response, e);
 		
 		if(after.equals("back")) {
-			
+			go(response,-1);
 		}
 	}// alertError() E
 	
@@ -61,7 +73,7 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			target = target == null? "self" : target;
 			
-			out.printf("<script> %s.history.go() </script>", target, step);
+			out.printf("<script> %s.history.go(%d) </script>", target, step);
 			
 		}catch(Exception e) {
 			e.printStackTrace();

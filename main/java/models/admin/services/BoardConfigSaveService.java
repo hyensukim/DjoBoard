@@ -79,7 +79,7 @@ public class BoardConfigSaveService {
 		//3. DB처리
 		boolean result =boardConfigDao.save(boardConfig);
 		if(!result) {
-			throw new BoardConfigException("설정 정보가 저장되지 않았습니다.");
+			throw new BoardConfigException("게시판 설정 등록에 실패했습니다.");
 		}
 	}// save E
 	

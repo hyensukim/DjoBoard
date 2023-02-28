@@ -4,14 +4,20 @@
 <c:url var="action" value="/admin/board/config"/>
 <layout:admin>
 	<div class="config_tit">
-		게시판 설정 등록
+		<c:if test="${empty boardConfig}">
+			게시판 설정 등록
+		</c:if>
+		<c:if test="${!empty boardConfig}">
+			[${boardConfig.boardId}(${boardConfig.boardNm})] 설정 수정
+		</c:if>
 	</div>
+	
 	<form name="saveConfig" method="post" action="${action}" target="ifrmProcess" autocomplete="off">
 		<table class="table_cols">
 			<tr>
 				<th>게시판 아이디</th>
 				<td>
-					<input type="text" name="boardId">
+					<input type="text" name="boardId" >
 				</td>
 			</tr>
 			

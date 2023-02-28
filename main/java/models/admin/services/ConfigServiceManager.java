@@ -20,8 +20,16 @@ public class ConfigServiceManager {
 		return instance;
 	}
 	
-	public BoardConfigSaveService getboardConfigSaveService() {
+	public BoardConfigSaveService getBoardConfigSaveService() {
 		return new BoardConfigSaveService(boardConfigDao(), new ConfigSaveServiceValidator());
+	}
+		
+	public BoardConfigDeleteService getBoardConfigDeleteService() {
+		return new BoardConfigDeleteService(boardConfigDao());
+	}
+	
+	public BoardConfigInfoService getBoardConfigInfoService() {
+		return new BoardConfigInfoService(boardConfigDao());
 	}
 	
 	

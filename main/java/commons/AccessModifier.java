@@ -10,7 +10,7 @@ import models.admin.exception.AdminAccessException;
 public class AccessModifier {
 /**
  *  관리자인 경우에만 접근 가능함.
- */
+
 	public void isAdmin(HttpServletRequest request, HttpServletResponse response) {
 		String type = request.getParameter("memberType");
 		
@@ -25,7 +25,7 @@ public class AccessModifier {
 			throw new AdminAccessException();
 		}
 	}
-	
+ */	
 	
 	
 }
