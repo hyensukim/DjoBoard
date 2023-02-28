@@ -30,7 +30,7 @@ public class ScriptLibrary {
 		alertError(response, e);
 		
 		if(after.equals("back")) {
-			
+			go(response,-1);
 		}
 	}// alertError() E
 	
@@ -61,7 +61,7 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			target = target == null? "self" : target;
 			
-			out.printf("<script> %s.history.go() </script>", target, step);
+			out.printf("<script> %s.history.go(%d) </script>", target, step);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
