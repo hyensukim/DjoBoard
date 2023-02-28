@@ -18,11 +18,8 @@ public class ScriptLibrary {
 			PrintWriter out = response.getWriter();
 			String message = e.getMessage();
 			
-<<<<<<< HEAD
-			out.printf("<script>alert('warning : %s')</script>", message);
-=======
 			out.printf("<script>alert('warning: %s');</script>", message);
->>>>>>> 권혜수
+
 		}catch(Exception e2) {
 			e2.printStackTrace();
 		}
@@ -34,6 +31,7 @@ public class ScriptLibrary {
 		alertError(response, e);
 		
 		if(after.equals("back")) {
+			go(response, -1);
 			
 		}
 	}// alertError() E

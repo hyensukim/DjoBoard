@@ -18,9 +18,15 @@ public class CommonFilter implements Filter{
 		CommonRequestWrapper _request = new CommonRequestWrapper((HttpServletRequest)req);
 		CommonResponseWrapper _response = new CommonResponseWrapper((HttpServletResponse)resp);
 		
+		/**
+		 * 
+		 *  AdminAccessException 클래스가 필요
+		 * 
+		//비회원, 회원, 관리자 접속 통제 처리
+		new MemberAccessControl(_request, _response);
+		*/
 		
 		chain.doFilter(_request, _response);
-		
+	
 	}
-
 }

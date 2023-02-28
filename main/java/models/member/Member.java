@@ -10,6 +10,7 @@ public class Member {
 	private String userPwRe;
 	private String userNm;
 	private String mobile;
+	private String userType;
 	private boolean agree;
 	private LocalDateTime regDt;
 	private LocalDateTime modDt;
@@ -62,6 +63,14 @@ public class Member {
 		this.mobile = mobile;
 	}
 	
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 	public boolean isAgree() {
 		return agree;
 	}

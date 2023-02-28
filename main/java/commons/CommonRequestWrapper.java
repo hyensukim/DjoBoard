@@ -17,7 +17,7 @@ public class CommonRequestWrapper extends HttpServletRequestWrapper{
 		}
 		
 		//로그인 상태 확인
-		
+		request.setAttribute("isLogin", MemberLibrary.isLogin(request));		
 	}// 요청시 공통 기능 E
 
 }
