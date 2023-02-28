@@ -8,7 +8,7 @@
       <property name="driver" value="com.mysql.cj.jdbc.Driver" />
       <property name="url" value="jdbc:mysql://localhost:3306/jsp_board" />
       <property name="username" value="root" />
-      <property name="password" value="dj5021179^^" /><!-- 공통 비번 : aA!123456 -->
+      <property name="password" value="aA!123456" />
   </properties>
   <settings>
   	<setting name="logImpl" value="LOG4J" />
