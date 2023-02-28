@@ -3,20 +3,22 @@ package models.member;
 import javax.servlet.http.HttpServletRequest;
 import org.mindrot.bcrypt.BCrypt;
 
+import commons.validator.Validator;
+
 
 public class MemberJoinService {
 	private MemberDao memberDao;
-	private MemberJoinValidator validator; //데이터 주입
+	private Validator<Member> validator; 
 	
 	public MemberJoinService(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
 	
-	public void setValidator(MemberJoinValidator validator) {
+	public void setValidator(Validator<Member> validator) {
 		this.validator = validator;
 	}
 	
-	public void doJoin(HttpServletRequest request) { //데이터가 들어오는 곳
+	public void doJoin(HttpServletRequest request) { 
 	/**
 	 * 1. 데이터 검증 - 유효성 검사
 	 * 		필수항목 : userId, userPw, userPwRe, userNm

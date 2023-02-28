@@ -95,11 +95,12 @@ public class Member {
 		this.modDt = modDt;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userPwRe=" + userPwRe
-				+ ", userNm=" + userNm + ", mobile=" + mobile + ", regDt=" + regDt + ", modDt=" + modDt + "]";
+				+ ", userNm=" + userNm + ", mobile=" + mobile + ", userType=" + userType + ", agree=" + agree
+				+ ", regDt=" + regDt + ", modDt=" + modDt + "]";
 	}
+	
 
 }

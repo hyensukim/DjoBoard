@@ -4,11 +4,13 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.bcrypt.BCrypt;
 
+import commons.validator.Validator;
+
 /**
  * 로그인 유효성 검사
  * @param memberDao
  */
-public class MemberLoginValidator {
+public class MemberLoginValidator implements Validator<Member>{
 	
 	private MemberDao memberDao;
 	

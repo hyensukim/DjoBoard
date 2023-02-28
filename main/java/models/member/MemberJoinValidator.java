@@ -1,8 +1,9 @@
 package models.member;
 
 import commons.validator.MobileValidator;
+import commons.validator.Validator;
 
-public class MemberJoinValidator implements MobileValidator{
+public class MemberJoinValidator implements MobileValidator, Validator<Member>{
 	
 	private MemberDao memberDao;
 	

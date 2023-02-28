@@ -5,15 +5,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import commons.validator.Validator;
+
 /**
  * 로그인 기능
  */
 
 public class MemberLoginService {
 	private MemberDao memberDao;
-	private MemberLoginValidator validator;
+	private Validator<Member> validator;
 	
-	public MemberLoginService(MemberDao memberDao, MemberLoginValidator validator) {
+	public MemberLoginService(MemberDao memberDao, Validator<Member> validator) {
 		this.memberDao = memberDao;
 		this.validator = validator;
 	}
@@ -25,12 +27,6 @@ public class MemberLoginService {
 	 * 1. 필수 항목 체크(userId, userPw)
 	 * 2. userId로 회원이 있는지 체크
 	 * 3. 회원이 있다면 비밀번호 검증
-	 * 
-	 * (------- 로그인 처리 -------)
-	 * 4. 비밀번호 검증이 완료가 된 경우 로그인 처리(HttpSession)
-	 * 5. 아이디 저장이 있거나 없는 경우 처리
-	 * 			- 아이디 저장이 있는 경우 쿠키에 등록(365일-만료기간)
-	 *			- 아이디 저장이 없는 경우 쿠키 삭제 
 	 */
 	public void doLogin(HttpServletRequest request, HttpServletResponse response) {
 		// 1. 필수항목 체크 S  -------------------------
@@ -68,12 +64,8 @@ public class MemberLoginService {
 			//아이디 저장이 없는 경우 쿠키 삭제
 			saveId.setMaxAge(0);
 		}
-		
 		response.addCookie(saveId);
 		// -------------------------아이디 저장이 있거나 없는 경우 처리 E
 		
-		
-		
 	}
-
 }
